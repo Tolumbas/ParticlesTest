@@ -1,56 +1,49 @@
-#canvas-id {
-    margin: 0; 
-    padding: 0;
-	width:100%;
-	height:100%;
-	cursor:crosshair;
-	position:absolute;
-	z-index:1;
-}
-body{
-    margin:0;
-	
-	background-color:black;
-}
-.holder{
-height:100%;
-position:absolute;
+@font-face { font-family: Title; src: url('foggybottom.ttf'); } 
 
-right:0;
-z-index:2;
-}
-.open > img{
-width:100%;
-position:relative;
-top:50%;
-}
-.controls{
-float:left;
-width:500px;
+body,html{
 height:100%;
-background-color:#EEE;
+overflow:hidden;
+background-color:black;
+margin:0;
 }
-.open{
-float:left;
-width:30px;
-height:100%;
-background-color:#AAA;
+
+.container{
+	display:flex;
+	height:100%;
+	flex-direction:column;
 }
-@media screen and (max-width: 800px) {
-	.controls{
-		width:80%;
+*{
+box-sizing:border-box;
+}
+header{
+	background:#AAA;
+	display:flex;
+	padding:5px 10px;
+}
+span{
+	font-family:Title;
+	flex:1;
+	vertical-align:middle;
+	text-align:center;
+}
+span.title{
+	font-size:200%;
+}
+span.back{
+	font-size:200%;
+	text-align:left;
+}
+span.back:hover{
+	color:blue;
+}
+a{ 
+	color: inherit; 
+	text-decoration:none;
+}
+@media screen and (max-width:900px){
+	span.back,span.fill{
+		display:none;
 	}
 }
-.control{
-width:95%;
-margin:20px auto 0 auto;
-}
-.slider{
-	width:40%;
-	display:inline-block;
-}
-.desk{
-	font-size:200%;
-	display:inline-block;
-	width:50%;
-}
+
+

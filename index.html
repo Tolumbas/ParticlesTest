@@ -3,46 +3,60 @@
     <head>
 		<meta charset="utf-8">
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="jquery-ui.min.css">
-        <script src="jquery-1.11.3.min.js"></script>
-        <script src="jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="styles2.css">
+		<link rel="stylesheet" href="jquery-ui.min.css">
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="jquery-ui.min.js"></script>
+		<script src="pubsub.js"></script>
+		<script src="init.js"></script> 
+		<script src="game.js"></script>
+		
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js">-->
     </head>
     <body>
-        <canvas id="canvas-id" ></canvas>
-		<div class="holder">
-			<div class="open"><img src="triangle.png"></img></div>
-			<div class="controls">
-				<div class="control">
-					<div class="desk">Size:</div> 
-					<div id="size" class="slider"></div>
-				</div>
-				<div class="control">
-					<div class="desk">Number:</div>
-					<div id="number" class="slider"></div>
-				</div>
-				<div class="control">
-					<div class="desk">Stickiness:</div>
-					<div id="stickiness" class="slider"></div>
-				</div>
-				<div class="control">
-					<div class="desk">Speed: </div>
-					<div id="speed" class="slider"></div>
-				</div>
-				<div class="control">
-					<div class="desk">Spawntime: </div>
-					<div id="spawntime" class="slider"></div>
-				</div>
-				<div class="control">
-					<div class="desk">Alpha: </div>
-					<div id="alpha" class="slider"></div>
-				</div>
-				<div class="control">
-					<button onclick="reset()">Clear Screen</button>
+		<div class="container">
+			<header>
+				<span class="back"><a href="http://anton.usr.me/">Anton's games</a></span>
+				<span class="title">Particles!!!</span>
+				<span class="fill"></span>
+			</header>
+			<canvas id="canvas-id" ></canvas>
+			<div class="holder">
+				<div class="open"><img src="triangle.png"></img></div>
+				<div class="controls">
+					<div class="control">
+						<div class="desk">Size:</div> 
+						<div id="size" class="slider"></div>
+					</div>
+					<div class="control">
+						<div class="desk">Number:</div>
+						<div id="number" class="slider"></div>
+					</div>
+					<div class="control">
+						<div class="desk">Stickiness:</div>
+						<div id="stickiness" class="slider"></div>
+					</div>
+					<div class="control">
+						<div class="desk">Speed: </div>
+						<div id="speed" class="slider"></div>
+					</div>
+					<div class="control">
+						<div class="desk">Spawntime: </div>
+						<div id="spawntime" class="slider"></div>
+					</div>
+					<div class="control">
+						<div class="desk">Alpha: </div>
+						<div id="alpha" class="slider"></div>
+					</div>
+					<div class="control">
+						<div class="desk">Light decay: </div>
+						<div id="light" class="slider"></div>
+					</div>
+					<div class="control">
+						<button id="cls">Clear Screen</button>
+					</div>
 				</div>
 			</div>
 		</div>
     </body>
-	
-    <script src="game.js"></script>
-	<script src="htmlControl.js"></script>
 </html>

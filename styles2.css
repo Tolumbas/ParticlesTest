@@ -1,0 +1,47 @@
+#canvas-id {
+	cursor:crosshair;
+	position:absolute;
+	background-color:black;
+	z-index:1;
+}
+.holder{
+height:100%;
+position:absolute;
+right:0;
+z-index:2;
+}
+.open > img{
+width:100%;
+position:relative;
+top:50%;
+}
+.controls{
+float:left;
+width:500px;
+height:100%;
+background-color:#EEE;
+}
+.open{
+float:left;
+width:30px;
+height:100%;
+background-color:#AAA;
+}
+@media screen and (max-width: 800px) {
+	.controls{
+		width:80%;
+	}
+}
+.control{
+width:95%;
+margin:20px auto 0 auto;
+}
+.slider{
+	width:40%;
+	display:inline-block;
+}
+.desk{
+	font-size:200%;
+	display:inline-block;
+	width:50%;
+}
