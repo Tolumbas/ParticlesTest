@@ -35,6 +35,13 @@ $(function() {
 	step:0.5,
 	change: handler
 	});
+	$("#alpha").slider({
+	min:0,
+	max:1,
+	value:0.03,
+	step:0.01,
+	change: handler
+	});
 	
 	function handler(event, ui){
 	//console.log($(this).attr("id"),$(this).slider("option", "value"))
