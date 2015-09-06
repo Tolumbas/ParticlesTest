@@ -1,3 +1,4 @@
+@font-face { font-family: Title; src: url('foggybottom.ttf'); } 
 #canvas-id {
 	cursor:crosshair;
 	position:absolute;
@@ -16,32 +17,37 @@ position:relative;
 top:50%;
 }
 .controls{
+display:flex;
 float:left;
-width:500px;
+flex-direction: column;
+width:300px;
 height:100%;
-background-color:#EEE;
+color:white;
+background-color:rgb(30,30,30,0);
 }
 .open{
 float:left;
 width:30px;
 height:100%;
-background-color:#AAA;
 }
 @media screen and (max-width: 800px) {
 	.controls{
-		width:80%;
+		width:(100% - 30px );
+		
 	}
 }
 .control{
 width:95%;
-margin:20px auto 0 auto;
+flex-grow:1;
+//margin:20px auto 0 auto;
 }
 .slider{
 	width:40%;
 	display:inline-block;
 }
 .desk{
-	font-size:200%;
+	font-size:170%;
+	font-family:Title;
 	display:inline-block;
 	width:50%;
 }

@@ -27,18 +27,11 @@ var game=(function(){
 		animate = canvasControl.requestAnimationFrame();
 		
 		pubsub.emit("controlReady");
-
+		pubsub.emit("resetSet");
 		
 		mouse = {x:canvas.width()/2,y:canvas.height()/2}
 		
-		reset2 = function(){
-			context.clearRect(0,0,canvas.width(),canvas.height());
-			console.log("hi!");
-			particles=[];
-			spawn.x=3.1415;
-		}
 		
-		pubsub.emit("resetSet");
 		bindEvents();
 		update();
 		draw();
@@ -81,11 +74,14 @@ var game=(function(){
 		//this.speed = this.hue/input.stickiness + input.speed; <--working
 	}
 	
-	function reset1(){
-		reset2();
-	}
+	function reset(){
 	
-	var reset2 = function(){}
+		context.clearRect(0,0,canvas.width(),canvas.height());
+		console.log("hi!");
+		particles=[];
+		spawn.x=3.1415;
+	}
+
 	
 	function summon(){
 		if (particles.length>= input.number)
@@ -160,7 +156,7 @@ var game=(function(){
 	
 	return {
 	control:control,
-	reset:reset1
+	reset:reset
 	}
 	
 })()

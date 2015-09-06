@@ -103,7 +103,32 @@ $(document).ready( function(){
 		});
 		
 	});
-	
+		var full = false;
+		$("#fullscreen").on("click",function(){
+			if (!full){
+				full=true;
+				var element = document.documentElement;
+				  if(element.requestFullscreen) {
+					element.requestFullscreen();
+				  } else if(element.mozRequestFullScreen) {
+					element.mozRequestFullScreen();
+				  } else if(element.webkitRequestFullscreen) {
+					element.webkitRequestFullscreen();
+				  } else if(element.msRequestFullscreen) {
+					element.msRequestFullscreen();
+				  }
+			}
+			else{
+				full=false;
+				 if(document.exitFullscreen) {
+					document.exitFullscreen();
+				  } else if(document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				  } else if(document.webkitExitFullscreen) {
+					document.webkitExitFullscreen();
+				  }
+			}
+		});
 	
 		$(".controls").hide();
 		var r= $(".controls").is(":visible")?90:270
