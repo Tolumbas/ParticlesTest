@@ -77,8 +77,8 @@ switch(name){
 
 function summon(){
 	if (particles.length>= input.number)return;
-	//var count = input.number/(input.spawntime*1000);
-	var count = (input.spawntime*5000)/input.number;
+	var count = input.number/(input.spawntime*1000/5)
+	//var count = (input.spawntime*5000)/input.number;
 	//count = input.number;
 	if (count==0){count=input.number;}
 		for (var a=0;a<count;a++){
@@ -108,9 +108,15 @@ function update() {
 	}
 	setTimeout(update, 10);
 }
-context.globalCompositeOperation = 'lighter';
+
+
 function draw() {
+	//context.globalCompositeOperation = 'source-over';
+	//context.fillStyle="rgba(0,0,0,0.01)"
+	//context.fillRect(0,0,canvas.width,canvas.height);
+	context.globalCompositeOperation = 'lighter';
 	for (var a=0;a<particles.length;a++){
+	
 		context.fillStyle = "hsla("+particles[a].hue+",100%,50%,"+input.alpha+")";
 		//context.beginPath();
 		//context.arc(particles[a].x,particles[a].y,input.size,0,Math.PI*2);

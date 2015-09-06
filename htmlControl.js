@@ -24,7 +24,7 @@ $(function() {
 	$("#speed").slider({
 	min:0.1,
 	max:2,
-	step:0.1,
+	step:0.01,
 	value:0.3,
 	change: handler
 	});
