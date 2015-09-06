@@ -46,7 +46,7 @@ function particle(){
 	this.hue=Math.round(h);
 	h+=360/input.number;
 	//this.speed = (this.hue/300)*input.stickiness + input.speed;
-	this.speed = this.hue/input.stickiness + input.speed;
+	//this.speed = this.hue/input.stickiness + input.speed; <--working
 }
 
 
@@ -77,7 +77,11 @@ switch(name){
 
 function summon(){
 	if (particles.length>= input.number)return;
-	var count = input.number/(input.spawntime*1000/5)
+	var count;
+	if (input.spawntime==0)
+		count=input.number;
+	else
+		count = input.number/(input.spawntime*1000/5)
 	//var count = (input.spawntime*5000)/input.number;
 	//count = input.number;
 	if (count==0){count=input.number;}
@@ -87,7 +91,7 @@ function summon(){
 	setTimeout(summon, 5);
 }
 
-window.addEventListener("mousemove", function (args) {	
+canvas.addEventListener("mousemove", function (args) {	
 	mouse.x = args.layerX;
 	mouse.y = args.layerY;
 	if (hold){
@@ -101,8 +105,9 @@ window.addEventListener("mousemove", function (args) {
 function update() {
 	for (var a=0;a<particles.length;a++){
 		var angle = Math.atan2(particles[a].x-mouse.x,particles[a].y-mouse.y);
-		particles[a].ax+=-Math.sin(angle)*particles[a].speed;
-		particles[a].ay+=-Math.cos(angle)*particles[a].speed;
+		speed = particles[a].hue/input.stickiness + input.speed;
+		particles[a].ax+=-Math.sin(angle)*speed;
+		particles[a].ay+=-Math.cos(angle)*speed;
 		particles[a].x+=particles[a].ax;
 		particles[a].y+=particles[a].ay;
 	}
@@ -111,9 +116,9 @@ function update() {
 
 
 function draw() {
-	//context.globalCompositeOperation = 'source-over';
-	//context.fillStyle="rgba(0,0,0,0.01)"
-	//context.fillRect(0,0,canvas.width,canvas.height);
+	context.globalCompositeOperation = 'source-over';
+	context.fillStyle="rgba(0,0,0,0.01)"
+	context.fillRect(0,0,canvas.width,canvas.height);
 	context.globalCompositeOperation = 'lighter';
 	for (var a=0;a<particles.length;a++){
 	
