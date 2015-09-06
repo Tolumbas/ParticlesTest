@@ -44,9 +44,8 @@ $(document).ready( function(){
 	})()
 	
 	pubsub.on("controlReady",function(){
-		console.log("hi!");
 		function handler(event, ui){
-			control($(this).attr("id"),$(this).slider("option", "value"))
+			game.control($(this).attr("id"),$(this).slider("option", "value"))
 		}
 	
 		$("#size").slider({
@@ -100,7 +99,7 @@ $(document).ready( function(){
 		});
 		
 		pubsub.on("resetSet",function(){
-			$("#cls").button().click(reset);;
+			$("#cls").button().click(game.reset);;
 		});
 		
 	});
@@ -129,7 +128,6 @@ $(document).ready( function(){
 			'transform': rotate 
 		});
 	});
-	
 	pubsub.emit("canvasReady");
 	
 }); 

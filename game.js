@@ -27,9 +27,18 @@ var game=(function(){
 		animate = canvasControl.requestAnimationFrame();
 		
 		pubsub.emit("controlReady");
-		pubsub.emit("resetReady");
+
+		
 		mouse = {x:canvas.width()/2,y:canvas.height()/2}
 		
+		reset2 = function(){
+			context.clearRect(0,0,canvas.width(),canvas.height());
+			console.log("hi!");
+			particles=[];
+			spawn.x=3.1415;
+		}
+		
+		pubsub.emit("resetSet");
 		bindEvents();
 		update();
 		draw();
@@ -72,15 +81,11 @@ var game=(function(){
 		//this.speed = this.hue/input.stickiness + input.speed; <--working
 	}
 	
-	
-	function reset(){
-		context.clearRect(0,0,canvas.width,canvas.height);
-		particles=[];
-		spawn.x=3.1415;
+	function reset1(){
+		reset2();
 	}
 	
-	
-	
+	var reset2 = function(){}
 	
 	function summon(){
 		if (particles.length>= input.number)
@@ -141,7 +146,7 @@ var game=(function(){
 		if (input.light!=0){
 			context.globalCompositeOperation = 'source-over';
 			context.fillStyle="rgba(0,0,0,0.01)"
-			context.fillRect(0,0,canvas.width,canvas.height);
+			context.fillRect(0,0,canvas.width(),canvas.height());
 		}
 		context.globalCompositeOperation = 'lighter';
 		for (var a=0;a<particles.length;a++){
@@ -153,6 +158,9 @@ var game=(function(){
 	
 	pubsub.on("canvasReady",init);
 	
-	
+	return {
+	control:control,
+	reset:reset1
+	}
 	
 })()

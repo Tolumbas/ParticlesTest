@@ -3,6 +3,7 @@ var pubsub = {
   on: function (eventName, fn) {
     this.events[eventName] = this.events[eventName] || [];
     this.events[eventName].push(fn);
+	console.log("!on: "+eventName);
   },
   off: function(eventName, fn) {
     if (this.events[eventName]) {
@@ -15,7 +16,7 @@ var pubsub = {
     }
   },
   emit: function (eventName, data) {
-	console.log(this.events,eventName);
+	console.log("!emit: "+eventName);
     if (this.events[eventName]) {
       this.events[eventName].forEach(function(fn) {
 		fn(data)
