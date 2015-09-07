@@ -18,6 +18,7 @@ var game=(function(){
 	var h = 0;
 	var hold;
 	var mouse;
+	var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 	
 	
 	
@@ -144,6 +145,7 @@ var game=(function(){
 			context.fillStyle="rgba(0,0,0,0.01)"
 			context.fillRect(0,0,canvas.width(),canvas.height());
 		}
+		if (!is_firefox)
 		context.globalCompositeOperation = 'lighter';
 		for (var a=0;a<particles.length;a++){
 			context.fillStyle = "hsla("+particles[a].hue+",100%,50%,"+input.alpha+")";
