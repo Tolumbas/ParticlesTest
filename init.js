@@ -130,8 +130,7 @@ $(document).ready( function(){
 			}
 		});
 	
-		$(".controls").hide();
-		var r= $(".controls").is(":visible")?90:270
+		var r= -90;
 		var rotate = 'rotate(' + r + 'deg)';
 			$(".open > img").css({ 
 				'-webkit-transform': rotate,
@@ -140,18 +139,35 @@ $(document).ready( function(){
 				'-ms-transform': rotate,
 				'transform': rotate 
 		});
-
+	var visible = false;
 	$(".open").click(function(){
-		$(".controls").toggle();
-		var r= $(".controls").is(":visible")?90:270
+		if (!visible){
+			
+			var r= '300px';
+			$(".controls").css({
+			'width': r,
+			'visibility':'visible'
+			});
+			visible = true;
+		}
+		else{
+			r= '0px';
+			$(".controls").css({
+			'width': r,
+			'visibility':'hidden'
+			});
+			visible=false;
+		}
+		var r= visible?90:270
 		var rotate = 'rotate(' + r + 'deg)';
 		$(".open > img").css({ 
 			'-webkit-transform': rotate,
 			'-moz-transform': rotate,
 			'-o-transform': rotate,
 			'-ms-transform': rotate,
-			'transform': rotate 
+			'transform': rotate,	
 		});
+			
 	});
 	pubsub.emit("canvasReady");
 	
