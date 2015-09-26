@@ -1,11 +1,21 @@
+/*
+
+Here I use jQuery magic to create the controls.
+jQuery is JavaScript library for easier code.
+Much improvement could be done.
+ 
+
+*/
 $(function() {
 	
+	//making the buttons
+	
 	$("#size").slider({
-	min:1,
-	max:20,
-	step:1,
-	value:1,
-	change: handler
+	min:1, // min value
+	max:20, // max value
+	step:1, // step
+	value:1, // init value 
+	change: handler // handler
 	});
 	$("#number").slider({
 	min:1,
@@ -43,11 +53,14 @@ $(function() {
 	change: handler
 	});
 	
-	function handler(event, ui){
-	//console.log($(this).attr("id"),$(this).slider("option", "value"))
-	control($(this).attr("id"),$(this).slider("option", "value"))
+	function handler(event, ui){ // handler
+		
+		//call the game.js function "control" sending the id and the value of the slider
+		control($(this).attr("id"),$(this).slider("option", "value")) 
 	}
 	
+	
+	// hiding the controls
 		$(".controls").hide();
 		var r= $(".controls").is(":visible")?90:270
 		var rotate = 'rotate(' + r + 'deg)';
@@ -59,6 +72,8 @@ $(function() {
 				'transform': rotate 
 		});
 
+	
+	//open or close the controls when asked
 	$(".open").click(function(){
 		$(".controls").toggle();
 		var r= $(".controls").is(":visible")?90:270
