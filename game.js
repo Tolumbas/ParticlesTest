@@ -55,7 +55,11 @@ function particle(){//this is struct(class) whitch defines the pixies!!!
 
 //do function when mouse button is pressed
 canvas.addEventListener("mousedown",function(e){
-	if (!spawning){spawning=true;setTimeout(summon,5);} //start spawning if we click for the first time
+
+	if (!spawning){//start spawning if we click for the first time
+		spawning=true;
+		summon(); // calling the function
+	} 
 	
 	// updating variables
 	spawn.x =e.layerX; 
@@ -82,13 +86,15 @@ canvas.addEventListener("mousemove", function (args) {
 ///*** add some usefull functions
 
 //this function resets the canvas
+//it is called by htmlControl.js see it if you like.
 function reset(){
-context.clearRect(0,0,canvas.width,canvas.height); // clear the canvas
-particles=[]; // empty the array
-spawning = false; // setting spawn to the init value so we can start spawning again 
+	context.clearRect(0,0,canvas.width,canvas.height); // clear the canvas
+	particles=[]; // empty the array
+	spawning = false; // setting spawn to the init value so we can start spawning again 
 }
 
-// here we handle the input
+// here we handle the input,
+// given by the htmlControl.js see it for more info
 function control(name,val){
 	switch(name){
 		case "size" :
@@ -114,7 +120,7 @@ function control(name,val){
 
 //this is the spawner!
 function summon(){
-	if (particles.length>= input.number)spawning = false // if we have spawned the particles exit the function
+	if (particles.length>= input.number)spawning = false // if we have spawned all the particles exit the function
 	if (!spawning)return;
 	var count; // how many pixies should we spawn now
 	
