@@ -14,7 +14,8 @@ var game=(function(){
 	
 	var particles = [];
 	var hueshift = 360/input.number;
-	var spawn={x:3.1415,y:-1};
+	var spawn={x:0,y:0};
+	var spawning= false;
 	var h = 0;
 	var hold;
 	var mouse;
@@ -42,7 +43,7 @@ var game=(function(){
 	var bindEvents = function(){
 	
 		canvas.on("mousedown", function (e){
-			if (spawn.x==3.1415){setTimeout(summon,5);}
+			if (!spawning){spawning=true;setTimeout(summon,5);}
 				var parentOffset = $(this).offset(); 
 				spawn.x = e.pageX - parentOffset.left;
 				spawn.y =  e.pageY - parentOffset.top;
@@ -72,21 +73,19 @@ var game=(function(){
 		this.ay = 0;
 		this.hue=Math.round(h);
 		h+=360/input.number;
-		//this.speed = this.hue/input.stickiness + input.speed; <--working
 	}
 	
 	function reset(){
-	
 		context.clearRect(0,0,canvas.width(),canvas.height());
-		console.log("hi!");
 		particles=[];
-		spawn.x=3.1415;
+		spawning = false;
 	}
 
 	
 	function summon(){
 		if (particles.length>= input.number)
-			return;
+			spawning = false;
+		if(!spawning)return;
 		var count;
 		if (input.spawntime==0)
 			count=input.number;
